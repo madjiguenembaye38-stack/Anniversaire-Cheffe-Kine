@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux anniversaire Cheffe Kiné</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffb6d9, #c8a2ff);
+            overflow: hidden;
+        }
+
+        .carte {
+            background: white;
+            padding: 30px 20px;
+            margin: 20px;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 380px;
+            box-shadow: 0 10px 30px #0003;
+            animation: apparition 1.5s ease;
+            z-index: 2;
+        }
+
+        h1 {
+            color: #e84393;
+        }
+
+        h2 {
+            color: #a855a0;
+        }
+
+        .gateau {
+            font-size: 80px;
+            animation: rebond 1.5s infinite;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        button {
+            background: #e84393;
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #c21870;
+        }
+
+        #message {
+            display: none;
+            color: #e84393;
+            font-weight: bold;
+            animation: apparition 1s ease;
+        }
+
+        .coeur {
+            position: fixed;
+            bottom: -40px;
+            font-size: 25px;
+            animation: monter 5s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes rebond {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes apparition {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes monter {
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="carte">
+
+        <div class="gateau">🎂</div>
+
+        <h1>Joyeux anniversaire ! 🎉</h1>
+
+        <h2>À ma Cheffe Kiné ❤️</h2>
+
+        <p>
+            Aujourd'hui est un jour spécial,
+            car une personne formidable célèbre
+            une nouvelle année de sa vie.
+        </p>
+
+        <p>
+            Que cette nouvelle année t'apporte
+            beaucoup de bonheur, une excellente santé,
+            de la réussite et plein de belles surprises.
+        </p>
+
+        <p>
+            Ne cesse jamais de sourire et de croire
+            en tes rêves. Tu mérites le meilleur ! 💕
+        </p>
+
+        <button onclick="ouvrirMessage()">
+            Clique ici, Cheffe 💖
+        </button>
+
+        <p id="message">
+            Surprise !!! 🥳💗
+            <br><br>
+            Joyeux anniversaire encore une fois !
+            Que tous tes vœux se réalisent.
+            <br><br>
+            Profite de ta journée au maximum.
+            <br>
+            Gros bisous et plein de bonheur ! 🎂❤️
+        </p>
+
+    </div>
+
+    <script>
+        function ouvrirMessage() {
+            document.getElementById("message").style.display = "block";
+
+            for (let i = 0; i < 30; i++) {
+                setTimeout(creerCoeur, i * 100);
+            }
+        }
+
+        function creerCoeur() {
+            const emojis = ["💗", "💕", "💖", "💜", "✨", "❤️"];
+
+            const coeur = document.createElement("div");
+            coeur.className = "coeur";
+
+            coeur.textContent =
+                emojis[Math.floor(Math.random() * emojis.length)];
+
+            coeur.style.left = Math.random() * 100 + "vw";
+            coeur.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(coeur);
+
+            setTimeout(function() {
+                coeur.remove();
+            }, 6000);
+        }
+
+        setInterval(creerCoeur, 700);
+    </script>
+
+</body>
+</html>
